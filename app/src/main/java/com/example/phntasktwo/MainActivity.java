@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.customList);
@@ -25,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent=new Intent(MainActivity.this,secondView.class);
-                Toast.makeText(MainActivity.this, ""+(int)position, Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,secondView.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
             }
         });
     }
